@@ -36,7 +36,7 @@ const dropdownOptions = [
     label: 'Github',
     key: 'github',
     onClick: () =>{
-      window.open("https://github.com/CorentinTh/it-tools");
+      window.open("https://github.com/utools-blowsnow/it-tools");
     }
   },
   {

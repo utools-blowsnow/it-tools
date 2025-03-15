@@ -1,0 +1,17 @@
+{
+  "$schema": "../node_modules/utools-api-types/resource/utools.schema.json",
+  "logo": "logo.jpg",
+  "main": "index.html",
+  "preload": "preload/services.js",
+  "development": {
+    "main": "http://localhost:5173/"
+  },
+  "features": [
+    {
+      "code": "open",
+      "cmds": [
+        "开发者工具"
+      ]
+    }
+  ]
+}

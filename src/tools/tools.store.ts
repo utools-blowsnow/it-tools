@@ -1,3 +1,4 @@
+import { useUtoolsStorage } from '@/storage/utoolsStorage';
 import { type MaybeRef, get, useStorage } from '@vueuse/core';
 import { defineStore } from 'pinia';
 import type { Ref } from 'vue';
@@ -6,7 +7,7 @@ import type { Tool, ToolCategory, ToolWithCategory } from './tools.types';
 import { toolsWithCategory } from './index';
 
 export const useToolStore = defineStore('tools', () => {
-  const favoriteToolsName = useStorage('favoriteToolsName', []) as Ref<string[]>;
+  const favoriteToolsName = useUtoolsStorage('favoriteToolsName', []) as Ref<string[]>;
   const { t } = useI18n();
 
   const tools = computed<ToolWithCategory[]>(() => toolsWithCategory.map((tool) => {

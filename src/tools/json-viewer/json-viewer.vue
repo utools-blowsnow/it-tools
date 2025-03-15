@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useUtoolsStorage } from '@/storage/utoolsStorage';
 import JSON5 from 'json5';
 import { useStorage } from '@vueuse/core';
 import { formatJson } from './json.models';
@@ -8,9 +9,9 @@ import TextareaCopyable from '@/components/TextareaCopyable.vue';
 
 const inputElement = ref<HTMLElement>();
 
-const rawJson = useStorage('json-prettify:raw-json', '{"hello": "world", "foo": "bar"}');
-const indentSize = useStorage('json-prettify:indent-size', 3);
-const sortKeys = useStorage('json-prettify:sort-keys', true);
+const rawJson = useUtoolsStorage('json-prettify:raw-json', '{"hello": "world", "foo": "bar"}');
+const indentSize = useUtoolsStorage('json-prettify:indent-size', 3);
+const sortKeys = useUtoolsStorage('json-prettify:sort-keys', true);
 const cleanJson = computed(() => withDefaultOnError(() => formatJson({ rawJson, indentSize, sortKeys }), ''));
 
 const rawJsonValidation = useValidation({

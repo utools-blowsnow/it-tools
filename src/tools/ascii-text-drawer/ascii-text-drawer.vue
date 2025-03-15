@@ -1,10 +1,11 @@
 <script setup lang="ts">
+import { useUtoolsStorage } from '@/storage/utoolsStorage';
 import figlet from 'figlet';
 import TextareaCopyable from '@/components/TextareaCopyable.vue';
 
 const input = ref('Ascii ART');
-const font = useStorage('ascii-text-drawer:font', 'Standard');
-const width = useStorage('ascii-text-drawer:width', 80);
+const font = useUtoolsStorage('ascii-text-drawer:font', 'Standard');
+const width = useUtoolsStorage('ascii-text-drawer:width', 80);
 const output = ref('');
 const errored = ref(false);
 const processing = ref(false);

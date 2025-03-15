@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useUtoolsStorage } from '@/storage/utoolsStorage';
 import { v1 as generateUuidV1, v3 as generateUuidV3, v4 as generateUuidV4, v5 as generateUuidV5, NIL as nilUuid } from 'uuid';
 import { useCopy } from '@/composable/copy';
 import { computedRefreshable } from '@/composable/computedRefreshable';
@@ -6,8 +7,8 @@ import { withDefaultOnError } from '@/utils/defaults';
 
 const versions = ['NIL', 'v1', 'v3', 'v4', 'v5'] as const;
 
-const version = useStorage<typeof versions[number]>('uuid-generator:version', 'v4');
-const count = useStorage('uuid-generator:quantity', 1);
+const version = useUtoolsStorage<typeof versions[number]>('uuid-generator:version', 'v4');
+const count = useUtoolsStorage('uuid-generator:quantity', 1);
 const v35Args = ref({ namespace: '6ba7b811-9dad-11d1-80b4-00c04fd430c8', name: '' });
 
 const validUuidRules = [

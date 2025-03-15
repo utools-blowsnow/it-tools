@@ -1,3 +1,4 @@
+import { useUtoolsStorage } from '@/storage/utoolsStorage';
 import { useRouteQuery } from '@vueuse/router';
 import { computed } from 'vue';
 import { useStorage } from '@vueuse/core';
@@ -45,7 +46,7 @@ function useQueryParamOrStorage<T>({ name, storageName, defaultValue }: { name: 
   const type = typeof defaultValue;
   const transformer = transformers[type as keyof typeof transformers] ?? transformers.string;
 
-  const storageRef = useStorage(storageName, defaultValue);
+  const storageRef = useUtoolsStorage(storageName, defaultValue);
   const proxyDefaultValue = transformer.toQuery(defaultValue as never);
   const proxy = useRouteQuery(name, proxyDefaultValue);
 

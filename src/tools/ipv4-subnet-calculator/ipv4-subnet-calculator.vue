@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useUtoolsStorage } from '@/storage/utoolsStorage';
 import { Netmask } from 'netmask';
 import { useStorage } from '@vueuse/core';
 import { ArrowLeft, ArrowRight } from '@vicons/tabler';
@@ -7,7 +8,7 @@ import { withDefaultOnError } from '@/utils/defaults';
 import { isNotThrowing } from '@/utils/boolean';
 import SpanCopyable from '@/components/SpanCopyable.vue';
 
-const ip = useStorage('ipv4-subnet-calculator:ip', '192.168.0.1/24');
+const ip = useUtoolsStorage('ipv4-subnet-calculator:ip', '192.168.0.1/24');
 
 const getNetworkInfo = (address: string) => new Netmask(address.trim());
 

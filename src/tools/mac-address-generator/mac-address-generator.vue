@@ -1,12 +1,13 @@
 <script setup lang="ts">
+import { useUtoolsStorage } from '@/storage/utoolsStorage';
 import _ from 'lodash';
 import { generateRandomMacAddress } from './mac-adress-generator.models';
 import { computedRefreshable } from '@/composable/computedRefreshable';
 import { useCopy } from '@/composable/copy';
 import { usePartialMacAddressValidation } from '@/utils/macAddress';
 
-const amount = useStorage('mac-address-generator-amount', 1);
-const macAddressPrefix = useStorage('mac-address-generator-prefix', '64:16:7F');
+const amount = useUtoolsStorage('mac-address-generator-amount', 1);
+const macAddressPrefix = useUtoolsStorage('mac-address-generator-prefix', '64:16:7F');
 
 const prefixValidation = usePartialMacAddressValidation(macAddressPrefix);
 
@@ -34,7 +35,7 @@ const separators = [
     value: '',
   },
 ];
-const separator = useStorage('mac-address-generator-separator', separators[0].value);
+const separator = useUtoolsStorage('mac-address-generator-separator', separators[0].value);
 
 const [macAddresses, refreshMacAddresses] = computedRefreshable(() => {
   if (!prefixValidation.isValid) {

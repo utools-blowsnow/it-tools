@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useUtoolsStorage } from '@/storage/utoolsStorage';
 import yaml from 'yaml';
 import { useStorage } from '@vueuse/core';
 import { formatYaml } from './yaml-models';
@@ -8,9 +9,9 @@ import TextareaCopyable from '@/components/TextareaCopyable.vue';
 
 const inputElement = ref<HTMLElement>();
 
-const rawYaml = useStorage('yaml-prettify:raw-yaml', '');
-const indentSize = useStorage('yaml-prettify:indent-size', 2);
-const sortKeys = useStorage('yaml-prettify:sort-keys', false);
+const rawYaml = useUtoolsStorage('yaml-prettify:raw-yaml', '');
+const indentSize = useUtoolsStorage('yaml-prettify:indent-size', 2);
+const sortKeys = useUtoolsStorage('yaml-prettify:sort-keys', false);
 
 const cleanYaml = computed(() => withDefaultOnError(() => formatYaml({ rawYaml, indentSize, sortKeys }), ''));
 

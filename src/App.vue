@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { tools } from '@/tools';
 import { RouterView, useRoute } from 'vue-router';
 import { NGlobalStyle, NMessageProvider, NNotificationProvider, darkTheme } from 'naive-ui';
 import { darkThemeOverrides, lightThemeOverrides } from './themes';
@@ -13,6 +14,41 @@ const theme = computed(() => (styleStore.isDarkTheme ? darkTheme : null));
 const themeOverrides = computed(() => (styleStore.isDarkTheme ? darkThemeOverrides : lightThemeOverrides));
 
 const { locale } = useI18n();
+
+// 如果在utools里面
+if (window['utools']){
+
+  console.log("create app");
+
+  const initToolsFeatures = () => {
+    // 扫描所有tools
+    for (const tool of tools) {
+      utools.removeFeature(tool.path)
+
+      let matchStr = (tool.keywords||[]).join("|")
+      utools.setFeature({
+        code: tool.path,
+        explain: tool.description,
+        cmds: [
+          tool.name,
+          {
+            // 类型标记（必须）
+            "type": "regex",
+            // 指令名称（必须）
+            "label": tool.name,
+            "match": "/("+matchStr+")/i",
+          },
+        ],
+      });
+    }
+  }
+
+  // 扫描所有tools
+  initToolsFeatures()
+
+  console.log("set tools locale", locale.value);
+}
+
 
 syncRef(
   locale,

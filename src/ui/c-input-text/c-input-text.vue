@@ -285,7 +285,7 @@ defineExpose({
     & > .input {
       flex: 1 1 0;
       min-width: 0;
-      height: 40px;
+      height: 32px;
 
       padding: 8px 0;
       outline: none;

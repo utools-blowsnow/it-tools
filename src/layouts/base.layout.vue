@@ -62,60 +62,60 @@ const handleSelectDropdown = (value => {
 
 <template>
   <MenuLayout class="menu-layout" :class="{ isSmallScreen: styleStore.isSmallScreen }">
-    <template #sider>
-      <RouterLink to="/" class="hero-wrapper">
-        <HeroGradient class="gradient" />
-        <div class="text-wrapper">
-          <div class="title">
-            IT - TOOLS
-          </div>
-          <div class="divider" />
-          <div class="subtitle">
-            {{ $t('home.subtitle') }}
-          </div>
-        </div>
-      </RouterLink>
+<!--    <template #sider>-->
+<!--      <RouterLink to="/" class="hero-wrapper">-->
+<!--        <HeroGradient class="gradient" />-->
+<!--        <div class="text-wrapper">-->
+<!--          <div class="title">-->
+<!--            IT - TOOLS-->
+<!--          </div>-->
+<!--          <div class="divider" />-->
+<!--          <div class="subtitle">-->
+<!--            {{ $t('home.subtitle') }}-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </RouterLink>-->
 
-      <div class="sider-content">
-        <div v-if="styleStore.isSmallScreen" flex flex-col items-center>
-          <locale-selector w="90%" />
+<!--      <div class="sider-content">-->
+<!--        <div v-if="styleStore.isSmallScreen" flex flex-col items-center>-->
+<!--          <locale-selector w="90%" />-->
 
-          <div flex justify-center>
-            <NavbarButtons />
-          </div>
-        </div>
+<!--          <div flex justify-center>-->
+<!--            <NavbarButtons />-->
+<!--          </div>-->
+<!--        </div>-->
 
-        <CollapsibleToolMenu :tools-by-category="tools" />
+<!--        <CollapsibleToolMenu :tools-by-category="tools" />-->
 
-        <div class="footer">
-          <div>
-            IT-Tools
+<!--        <div class="footer">-->
+<!--          <div>-->
+<!--            IT-Tools-->
 
-            <c-link target="_blank" rel="noopener" :href="`https://github.com/CorentinTh/it-tools/tree/v${version}`">
-              v{{ version }}
-            </c-link>
+<!--            <c-link target="_blank" rel="noopener" :href="`https://github.com/CorentinTh/it-tools/tree/v${version}`">-->
+<!--              v{{ version }}-->
+<!--            </c-link>-->
 
-            <template v-if="commitSha && commitSha.length > 0">
-              -
-              <c-link
-                target="_blank"
-                rel="noopener"
-                type="primary"
-                :href="`https://github.com/CorentinTh/it-tools/tree/${commitSha}`"
-              >
-                {{ commitSha }}
-              </c-link>
-            </template>
-          </div>
-          <div>
-            © {{ new Date().getFullYear() }}
-            <c-link target="_blank" rel="noopener" href="https://corentin.tech?utm_source=it-tools&utm_medium=footer">
-              Corentin Thomasset
-            </c-link>
-          </div>
-        </div>
-      </div>
-    </template>
+<!--            <template v-if="commitSha && commitSha.length > 0">-->
+<!--              - -->
+<!--              <c-link-->
+<!--                target="_blank"-->
+<!--                rel="noopener"-->
+<!--                type="primary"-->
+<!--                :href="`https://github.com/CorentinTh/it-tools/tree/${commitSha}`"-->
+<!--              >-->
+<!--                {{ commitSha }}-->
+<!--              </c-link>-->
+<!--            </template>-->
+<!--          </div>-->
+<!--          <div>-->
+<!--            © {{ new Date().getFullYear() }}-->
+<!--            <c-link target="_blank" rel="noopener" href="https://corentin.tech?utm_source=it-tools&utm_medium=footer">-->
+<!--              Corentin Thomasset-->
+<!--            </c-link>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </template>-->
 
     <template #content>
       <div flex items-center justify-center gap-2>

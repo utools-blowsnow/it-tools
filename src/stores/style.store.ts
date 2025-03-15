@@ -10,7 +10,7 @@ export const useStyleStore = defineStore('style', {
     const isSmallScreen = useMediaQuery('(max-width: 700px)');
     const isMenuCollapsed = useUtoolsStorage('isMenuCollapsed', true) as Ref<boolean>;
 
-    watch(isSmallScreen, v => (isMenuCollapsed.value = v));
+    // watch(isSmallScreen, v => (isMenuCollapsed.value = v));
 
     return {
       isDarkTheme,

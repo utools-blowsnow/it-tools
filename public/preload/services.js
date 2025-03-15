@@ -13,5 +13,5 @@ utools.onPluginEnter((action) => {
   if (!action.code || action.code === 'open'){
     return
   }
-  location.href = location.origin + '#' + action.code
+  location.hash = '#' + action.code
 })

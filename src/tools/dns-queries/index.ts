@@ -8,7 +8,7 @@ export const tool = defineTool({
   keywords: ['dns', 'nslookup'],
   component: () => import('./dns-queries.vue'),
   icon: World,
-  createdAt: new Date('2024-08-15'),
+  createdAt: new Date('2025-03-16'),
   cmds:[
     {
       "type": "regex",

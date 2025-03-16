@@ -1,3 +1,6 @@
 {
-  "type": "commonjs"
+  "type": "commonjs",
+  "dependencies": {
+    "nodejs-traceroute": "^2.0.1"
+  }
 }

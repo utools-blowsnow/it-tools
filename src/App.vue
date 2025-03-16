@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { tools } from '@/tools';
+import { useToolStore } from '@/tools/tools.store';
 import { RouterView, useRoute } from 'vue-router';
 import { NGlobalStyle, NMessageProvider, NNotificationProvider, darkTheme } from 'naive-ui';
 import { darkThemeOverrides, lightThemeOverrides } from './themes';
@@ -21,16 +22,20 @@ if (window['utools']){
   console.log("create app");
 
   const initToolsFeatures = () => {
+    let toolStore = useToolStore()
     // 扫描所有tools
-    for (const tool of tools) {
+    for (const tool of toolStore.tools) {
       utools.removeFeature(tool.path)
 
       let matchStr = (tool.keywords||[]).join("|")
+
       utools.setFeature({
         code: tool.path,
         explain: tool.description,
         cmds: [
           tool.name,
+          ...(tool.cmds || []),
+          // 关键词匹配
           {
             // 类型标记（必须）
             "type": "regex",

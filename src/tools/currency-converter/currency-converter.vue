@@ -26,14 +26,17 @@ const convertedCurrencies = computedAsync<Record<string, number>>(async () => {
   }
   return result;
 });
-
+const cache = {}
 const convertOnDate = async (value: number, fromCurrency: string, toCurrency: string, inputDate: string) => {
   fromCurrency = fromCurrency.trim().toLowerCase();
   toCurrency = toCurrency.trim().toLowerCase();
 
-  console.log('\n', inputDate);
+  const cacheKey = `${fromCurrency}-${inputDate}`;
+  if (cache[cacheKey]){
+    return cache[cacheKey];
+  }
 
-  return await fetch(
+  return cache[cacheKey] = await fetch(
     `https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@${inputDate}/v1/currencies/${fromCurrency}.json`
   )
     .then((res) => res.json())

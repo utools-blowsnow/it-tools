@@ -401,3 +401,18 @@ tools:
     currenciesToCountries: 货币到国家
     country: 国家
     currency: 货币
+
+  crt-query:
+      title: 证书搜索
+      description: 域名证书搜索
+      placeholder: 请输入域名
+
+  traceroute:
+    title: 路由跟踪
+    description: 用于跟踪数据包从源主机到目标主机所经过路径的网络诊断工具
+    placeholder: 请输入IP
+
+  dns-queries:
+    title: DNS查询
+    description: DNS查询
+

@@ -1,0 +1,26 @@
+[
+  {
+    "label": "地址记录(Ipv4)",
+    "value": "A"
+  },
+  {
+    "label": "地址记录(Ipv6)",
+    "value": "AAAA"
+  },
+  {
+    "label": "别名记录(CNAME)",
+    "value": "CNAME"
+  },
+  {
+    "label": "邮件服务器(MX)",
+    "value": "MX"
+  },
+  {
+    "label": "名字服务器(NX)",
+    "value": "NX"
+  },
+  {
+    "label": "文本信息(TXT)",
+    "value": "TXT"
+  }
+]

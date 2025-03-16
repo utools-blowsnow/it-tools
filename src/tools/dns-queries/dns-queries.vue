@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import { useQueryParam } from '@/composable/queryParams';
+import { useUtoolsStorage } from '@/storage/utoolsStorage';
 import { getDnsRecords } from '@layered/dns-records';
 import types from './dns.records.types.json';
-const type = ref('A');
 const searchValue = useQueryParam({ name: 'search', defaultValue: '' });
 const results = ref<any[]>([]);
-
 const servers = [
   {
     label: "cloudflare-dns",
@@ -16,7 +15,9 @@ const servers = [
     value: "google-dns"
   }
 ]
-const server = ref(servers[0].value);
+
+const server = useUtoolsStorage("dns-queries:server", servers[0].value)
+const type = useUtoolsStorage("dns-queries:type", 'A')
 
 const loading = ref(false)
 const message = useMessage();

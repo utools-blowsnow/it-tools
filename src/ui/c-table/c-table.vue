@@ -63,3 +63,11 @@ const headers = computed(() => {
     </table>
   </div>
 </template>
+
+
+<style>
+table tbody td {
+  min-width: 100px;
+  word-break: break-all;
+}
+</style>

@@ -3,8 +3,8 @@ import moneysData from './moneys.json';
 import { useQueryParamOrStorage } from '@/composable/queryParams';
 
 const allCurrencies = Object.entries(moneysData).map(([k, v]) => ({ value: k, label: v || k }));
-const otherCurrencies = useQueryParamOrStorage<{ name: string }[]>({ name: 'to', storageName: 'currency-conv:others', defaultValue: [{ name: 'cny' }] });
-const currentCurrency = useQueryParamOrStorage<string>({ name: 'from', storageName: 'currency-conv:cur', defaultValue: 'usd' });
+const currentCurrency = useQueryParamOrStorage<string>({ name: 'from', storageName: 'currency-conv:cur', defaultValue: 'cny' });
+const otherCurrencies = useQueryParamOrStorage<{ name: string }[]>({ name: 'to', storageName: 'currency-conv:others', defaultValue: [{ name: 'usd' }] });
 const amount = ref(1);
 // 获取现在年月日
 const date = new Date();

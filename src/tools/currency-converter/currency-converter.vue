@@ -32,18 +32,20 @@ const convertOnDate = async (value: number, fromCurrency: string, toCurrency: st
   toCurrency = toCurrency.trim().toLowerCase();
 
   const cacheKey = `${fromCurrency}-${inputDate}`;
+  let data = null;
   if (cache[cacheKey]){
-    return cache[cacheKey];
+    data = cache[cacheKey];
+  }else{
+    data = cache[cacheKey] = await fetch(
+      `https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@${inputDate}/v1/currencies/${fromCurrency}.json`
+    )
+      .then((res) => res.json())
+      .catch((_) => {
+        throw new Error(`Error: ${fromCurrency} to ${toCurrency} conversion not available`);
+      });;
   }
 
-  return cache[cacheKey] = await fetch(
-    `https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@${inputDate}/v1/currencies/${fromCurrency}.json`
-  )
-    .then((res) => res.json())
-    .then((data) => value * data[fromCurrency][toCurrency])
-    .catch((_) => {
-      throw new Error(`Error: ${fromCurrency} to ${toCurrency} conversion not available`);
-    });
+  return value * data[fromCurrency][toCurrency];
 };
 
 currentDatetime.value = year + '-' + (month < 10 ? '0' + month : month) + '-' + (day < 10 ? '0' + day : day)
